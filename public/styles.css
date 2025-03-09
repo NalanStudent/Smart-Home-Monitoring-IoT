@@ -1,0 +1,549 @@
+/* Global Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #1e1e2f;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Sidebar Styles */
+.sidebar {
+    width: 220px;
+    height: 100vh;
+    background-color: #2a2a40;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    padding-top: 0;
+}
+
+.dashboard-title h1 {
+    font-size: 2rem;
+    color: #fff;
+    margin: 0;
+    font-weight: bold;
+    text-transform: capitalize;
+}
+
+.sidebar-header {
+    width: 100%;
+    text-align: center;
+    padding: 20px 0;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #fff;
+    border-bottom: 1px solid #41415e;
+    background-color: #2a2a40;
+    margin-bottom: 10px;
+}
+
+.sidebar h2 {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+    font-weight: bold;
+}
+
+.sidebar a {
+    width: 90%;
+    text-decoration: none;
+    color: #c7c7d3;
+    padding: 10px 15px;
+    margin: 5px 0;
+    text-align: start;
+    border-radius: 4px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.sidebar a:hover {
+    background-color: #41415e;
+    color: #fff;
+}
+
+.sidebar a.active {
+    background-color: #5c5c8a;
+    color: #fff;
+    font-weight: bold;
+}
+
+/* Sidebar Icons */
+.sidebar a i {
+    font-size: 1.2rem;
+    margin-right: 10px;
+    vertical-align: middle;
+    color: #c7c7d3;
+    transition: color 0.3s;
+}
+
+.sidebar a:hover i,
+.sidebar a.active i {
+    color: #ffffff;
+}
+
+/* Main Content */
+.main-content {
+    margin-left: 220px;
+    padding: 20px;
+    flex-grow: 1;
+    background-color: #232334;
+    min-height: 100vh;
+    box-sizing: border-box;
+}
+
+/* Section Headings */
+h2 {
+    font-size: 1.3rem;
+    color: #82aaff;
+    margin-bottom: 15px;
+    padding-bottom: 0px;
+}
+
+/* Cards */
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #2e2e4a;
+    color: #fff;
+    padding: 10px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    min-height: 150px;
+}
+
+.gauge-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+/* LED Control Section */
+.card.led-control {
+    padding: 20px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.card.led-control h2 {
+    font-size: 1.25rem;
+    margin-bottom: 10px;
+}
+
+.card.led-control .button-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+    width: 100%;
+    justify-content: center;
+}
+
+.card.led-control button {
+    flex: 1;
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.card.led-control button.btn-primary {
+    background-color: #306daa;
+    color: #fff;
+}
+
+.card.led-control button.btn-primary:hover {
+    background-color: #235c84;
+}
+
+.card.led-control button.btn-secondary {
+    background-color: #6c757d;
+    color: #fff;
+}
+
+.card.led-control button.btn-secondary:hover {
+    background-color: #5a6268;
+}
+
+.card.led-control p {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+/* Electricity Consumption History */
+#line-chart {
+    padding: 20px;
+    background-color: #2e2e4a;
+    border-radius: 8px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    overflow: hidden;
+}
+
+#line-chart h2 {
+    margin: 0 0 10px 0;
+    font-size: 1.25rem;
+    color: #82aaff;
+}
+
+#line-chart h2 i {
+    font-size: 1.5rem;
+    color: #99b6f4;
+    margin-right: 8px;
+    vertical-align: middle;
+}
+
+#line-chart canvas {
+    background-color: #2e2e4a;
+    width: 100%;
+    height: calc(100%-50px);
+    max-height: 300px;
+    object-fit: contain;
+}
+
+/* Gauge Container */
+.gauge-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto auto;
+    grid-gap: 15px;
+    align-items: start;
+    margin-top: 20px;
+}
+
+/* Font Awesome Icons */
+.fas {
+    font-size: 20px;
+    color: #306daa;
+    margin-right: 8px;
+    vertical-align: middle;
+}
+
+/* Common Styles for LED Buttons */
+.btn-led {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+}
+
+/* ON Button Styles */
+.btn-on {
+    background: linear-gradient(45deg, #00c851, #007e33);
+    box-shadow: 0px 4px 6px rgba(0, 200, 81, 0.4);
+}
+
+.btn-on:hover {
+    background: linear-gradient(45deg, #007e33, #00c851);
+    box-shadow: 0px 6px 8px rgba(0, 200, 81, 0.6);
+    transform: translateY(-2px);
+}
+
+/* OFF Button Styles */
+.btn-off {
+    background: linear-gradient(45deg, #ff4444, #cc0000);
+    box-shadow: 0px 4px 6px rgba(255, 68, 68, 0.4);
+}
+
+.btn-off:hover {
+    background: linear-gradient(45deg, #cc0000, #ff4444);
+    box-shadow: 0px 6px 8px rgba(255, 68, 68, 0.6);
+    transform: translateY(-2px);
+}
+
+/* Button Group Alignment */
+.button-group {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    margin-top: 15px;
+    justify-content: center;
+}
+
+/* Top Right */
+.top-right {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #ffffff;
+    text-align: right;
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.2;
+}
+
+.top-right span {
+    display: block;
+    margin-bottom: 3px;
+}
+
+/* Notifications Page Styles */
+.notifications-title h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #82aaff;
+    margin-bottom: 20px;
+}
+
+#notifications-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.notification-card {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    border-radius: 8px;
+    background-color: #f1f1f1;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    gap: 15px;
+}
+
+.notification-icon {
+    font-size: 2rem;
+    color: #306daa;
+}
+
+.notification-content h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.notification-content p {
+    margin: 5px 0;
+    color: #555;
+}
+
+.notification-time {
+    font-size: 0.9rem;
+    color: #888;
+}
+
+/* Style for the toggle switch */
+.toggle-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 50px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    border-radius: 50px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+}
+
+input:checked + .slider {
+    background-color: #4CAF50;
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+/* Optional: Change the LED status text */
+#ledStatus {
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 10px;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    /* Adjust Sidebar */
+    .sidebar {
+        width: 200px;
+    }
+
+    .main-content {
+        margin-left: 0;
+        padding: 10px;
+    }
+
+    /* Stack the sensor cards */
+    .gauge-container {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    /* Adjust LED control section */
+    .card.led-control {
+        height: auto;
+    }
+
+    .button-group {
+        flex-direction: column; /* Stack buttons */
+    }
+
+    /* Make charts full width */
+    #line-chart {
+        grid-column: 1 / -1; /* Full width */
+    }
+
+    /* Adjust Notification Cards */
+    .notification-card {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    /* Adjust Top-Right text */
+    .top-right {
+        position: relative;
+        top: auto;
+        right: auto;
+        text-align: left;
+        font-size: 0.9rem;
+    }
+
+    /* Adjust Button Sizes */
+    .btn-on, .btn-off {
+        font-size: 0.9rem;
+        padding: 8px 15px;
+    }
+}
+
+/* Mobile-first layout for very small screens */
+@media (max-width: 480px) {
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+    }
+
+    .main-content {
+        margin-left: 0;
+    }
+
+    .gauge-container {
+        grid-template-columns: 1fr;
+    }
+
+    /* Make everything more compact */
+    .card, .card.led-control {
+        min-height: 120px;
+        padding: 5px;
+    }
+}
+
+
+
+
+
+
+
+#notifications-container {
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.notification-card {
+    background-color: #f8f9fa;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.notification-icon {
+    margin-right: 10px;
+}
+
+.notification-content {
+    flex-grow: 1;
+}
+
+.notification-time {
+    font-size: 0.85rem;
+    color: #6c757d;
+}
+
+
+/* Style for the close button */
+.notification-card {
+    position: relative; /* Ensure the close button can be positioned relative to the card */
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 16px;
+    color: #ccc;
+    cursor: pointer;
+}
+
+.close-btn:hover {
+    color: #ff0000; /* Red color on hover */
+}
+
+.close-btn i {
+    font-size: 18px;
+}
